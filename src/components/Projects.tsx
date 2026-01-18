@@ -3,7 +3,10 @@ const projects = [
     title: "Jogo Multiplayer em Tempo Real",
     description:
       "Projeto desenvolvido para aplicar conceitos de backend em tempo real utilizando WebSockets. O servidor é responsável por gerenciar salas, jogadores conectados, estado das partidas e sincronização entre clientes.",
-    image: "/projects/pedra-papel-tesoura.png", // coloque em /public/projects
+    images: [
+      "/projects/jokenpo.png",
+      "/projects/jokenpo2.png",
+    ],
     stack: ["Node.js", "Socket.IO", "TypeScript", "React"],
     github: "#",
     demo: "#",
@@ -12,41 +15,48 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section className="bg-zinc-950">
+    <section className="bg-zinc-950 min-h-screen flex flex-col justify-center">
       <div className="mx-auto max-w-5xl px-6 py-24">
         {/* Header */}
-        <header className="max-w-xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-zinc-100">
+        <header className="max-w-xl border-b border-zinc-800 pb-6">
+          <h2 className="text-3xl font-extrabold tracking-tight text-zinc-100">
             Projetos
           </h2>
-          <p className="mt-3 text-sm leading-relaxed text-zinc-400">
-            Projetos pessoais focados em backend, comunicação em tempo real e
-            arquitetura de aplicações.
-          </p>
         </header>
 
         {/* Projects */}
         <div className="mt-16 space-y-24">
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <article
               key={project.title}
-              className="grid gap-10 md:grid-cols-2 md:items-center"
+              className={`grid gap-10 md:grid-cols-2 md:items-start ${
+                idx !== projects.length - 1 ? "border-b border-zinc-800 pb-16" : ""
+              }`}
             >
-              {/* Image */}
-              <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="h-full w-full object-cover"
-                />
+              {/* Images */}
+              <div className="overflow-hidden rounded-xl border border-zinc-800 bg-zinc-900 grid grid-cols-2 gap-2 p-2 order-2 md:order-1">
+                {project.images.map((img, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-center max-h-80 md:max-h-96"
+                  >
+                    <img
+                      src={img}
+                      alt={`${project.title} ${i + 1}`}
+                      className="max-h-full max-w-full object-contain rounded-md"
+                    />
+                  </div>
+                ))}
               </div>
 
-              {/* Content */}
-              <div className="max-w-xl">
+              {/* Content (título, descrição, stack, links) */}
+              <div className="max-w-xl order-1 md:order-2 flex flex-col justify-center">
+                {/* Título */}
                 <h3 className="text-xl font-semibold text-zinc-100">
                   {project.title}
                 </h3>
 
+                {/* Descrição */}
                 <p className="mt-4 text-sm leading-relaxed text-zinc-400">
                   {project.description}
                 </p>
