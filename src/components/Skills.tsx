@@ -48,7 +48,7 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section className="bg-zinc-950">
+    <section id="skills" className="bg-zinc-950">
       <div className="mx-auto max-w-5xl px-6 py-16 md:py-24">
         {/* Header - Centralizado no mobile para seguir o padrão do Hero */}
         <header className="max-w-xl text-center md:text-left">
