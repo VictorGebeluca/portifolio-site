@@ -1,15 +1,13 @@
-import { SiGithub, SiLinkedin } from 'react-icons/si';
+import { SiGithub, SiLinkedin, SiWhatsapp } from 'react-icons/si';
 import { MdEmail } from 'react-icons/md';
-import { FiChevronDown } from 'react-icons/fi';
-import { SiWhatsapp } from 'react-icons/si';
 
 const Hero = () => {
   return (
-    <section className="bg-gradient-to-br from-zinc-950 to-zinc-900 min-h-[80vh] flex flex-col justify-center px-4 py-8 md:px-6">
+    <section className="bg-gradient-to-br from-zinc-950 to-zinc-900 min-h-screen flex flex-col justify-center px-4 py-8 md:px-6 relative">
       <div className="flex-grow flex items-center">
         <div className="mx-auto flex w-full max-w-5xl flex-col justify-center items-center">
           
-          {/* Badge - Agora centralizada em todos os tamanhos (mx-auto) */}
+          {/* Badge */}
           <span className="mb-4 w-fit mx-auto rounded-md border border-zinc-800 bg-zinc-900 px-3 py-1 text-[10px] md:text-xs text-zinc-400 flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -32,14 +30,14 @@ const Hero = () => {
 
           {/* Cargo */}
           <h2 className="mt-2 text-base md:text-lg font-medium text-zinc-300 text-center px-2">
-            Desenvolvedor em formação focado em soluções acertivas
+            Desenvolvedor em formação focado em soluções assertivas
           </h2>
 
           {/* Linha de destaque */}
           <div className="mt-4 h-px w-20 bg-blue-500" />
 
           {/* Stack principal */}
-          <p className="mt-2 text-xs md:text-sm font-medium text-blue-400 text-center">
+          <p className="mt-2 text-xs md:text-sm font-medium text-blue-400 text-center uppercase tracking-wider">
             Node.js • TypeScript • PostgreSQL • APIs REST
           </p>
 
@@ -63,31 +61,23 @@ const Hero = () => {
               href="https://wa.me/5541997690891"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full md:w-auto text-center rounded-md border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition hover:border-zinc-500 hover:bg-zinc-800"
+              className="group w-full md:w-auto text-center rounded-md border border-zinc-700 px-6 py-3 text-sm font-semibold text-zinc-300 transition hover:border-green-500/50 hover:bg-zinc-800"
             >
-              <SiWhatsapp className="w-4 h-4 inline mr-2" /> Falar com Victor
+              <SiWhatsapp className="w-4 h-4 inline mr-2 text-green-500 transition-transform group-hover:scale-110" /> Falar com Victor
             </a>
           </div>
 
           {/* Redes sociais */}
           <div className="mt-6 flex justify-center gap-6">
-            <a
-              href="https://github.com"
-              className="text-zinc-400 hover:text-zinc-100 transition-colors"
-              aria-label="GitHub"
-            >
+            <a href="https://github.com" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="GitHub">
               <SiGithub className="h-6 w-6" />
             </a>
-            <a
-              href="https://linkedin.com"
-              className="text-zinc-400 hover:text-zinc-100 transition-colors"
-              aria-label="LinkedIn"
-            >
+            <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="text-zinc-400 hover:text-zinc-100 transition-colors" aria-label="LinkedIn">
               <SiLinkedin className="h-6 w-6" />
             </a>
-            <a
-              href="mailto:email@example.com"
-              className="text-zinc-400 hover:text-zinc-100 transition-colors"
+            <a 
+              href="mailto:victormiguel01@gmail.com" 
+              className="text-zinc-400 hover:text-zinc-100 transition-colors" 
               aria-label="Email"
             >
               <MdEmail className="h-6 w-6" />
@@ -95,9 +85,31 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <a href="#skills" className="flex justify-center pb-4">
-        <FiChevronDown className="h-8 w-8 text-zinc-400 animate-bounce" />
-      </a>
+
+      {/* Indicador de Scroll */}
+      <div className="pt-4 pb-8 flex flex-col items-center gap-2">
+        <a 
+          href="#about" 
+          className="flex flex-col items-center gap-2 transition-opacity hover:opacity-70"
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold">
+            Deslize para baixo
+          </span>
+          <div className="w-[22px] h-[36px] rounded-full border-2 border-zinc-800 flex justify-center p-1.5">
+            <div className="w-1 h-2 bg-blue-500 rounded-full animate-scroll-move"></div>
+          </div>
+        </a>
+      </div>
+
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes scroll-move {
+          0% { transform: translateY(0); opacity: 1; }
+          100% { transform: translateY(12px); opacity: 0; }
+        }
+        .animate-scroll-move {
+          animation: scroll-move 1.8s ease-in-out infinite;
+        }
+      `}} />
     </section>
   );
 };
